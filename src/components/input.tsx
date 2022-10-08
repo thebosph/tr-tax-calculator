@@ -7,7 +7,7 @@ interface InputProps {
   register: UseFormRegister<InputTypes>;
   required?: boolean;
   disabled?: boolean;
-  defaultValue?: number;
+  defaultValue: number;
 }
 
 const Input = ({
@@ -18,7 +18,6 @@ const Input = ({
   disabled,
   defaultValue,
 }: InputProps) => {
-  console.log(disabled);
   return (
     <div className="flex flex-col shadow-lg space-y-2 p-2 w-full rounded-md ">
       <label className="text-2xl">{labelName}</label>

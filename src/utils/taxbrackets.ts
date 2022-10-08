@@ -8,7 +8,7 @@ export const taxCalcForBrackets = (basis: number) => {
     return basis * 0.15;
   }
   if (basis <= 70000) {
-    return 4800 + (basis - 32000) * 0.19;
+    return 4800 + (basis - 32000) * 0.2;
   }
   if (basis <= 250000) {
     return 12400 + (basis - 70000) * 0.27;

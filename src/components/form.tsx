@@ -5,6 +5,7 @@ import useStore from "../store/useStore";
 import Input from "./input";
 import Select from "./select";
 import Modal from "./modal";
+import { HOUSE_EXCEPTION } from "../constants";
 
 const Form = () => {
   const {
@@ -17,14 +18,19 @@ const Form = () => {
 
   const { setResults, modal, setModal } = useStore();
   const { expenses, revenue, expensesKind, allowance } = watch();
+
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
     if (revenue <= 9500) {
       return setModal(true);
     }
+    if (data.expensesKind === "sumExpenses") {
+      data.expenses = (data.revenue - HOUSE_EXCEPTION) * 0.15;
+    }
+
     const result = calculator(data);
     setResults(result);
     reset();
-    console.log(data);
+    console.log(result);
   };
 
   //watch for expensesKind change
@@ -35,10 +41,21 @@ const Form = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col md:flex-row justify-center items-center space-y-5 md:space-y-0 md:space-x-5   w-full  "
       >
-        <Input labelName="Gelir" label="revenue" register={register} required />
+        <Input
+          labelName="Gelir"
+          label="revenue"
+          register={register}
+          defaultValue={0}
+          required
+        />
         {errors.revenue && <span>Bu alanı boş bırakamazsınız</span>}
 
-        <Input labelName="İndirimler" label="allowance" register={register} />
+        <Input
+          labelName="İndirimler"
+          label="allowance"
+          register={register}
+          defaultValue={0}
+        />
         <Select
           label="expensesKind"
           labelName="Gider Türü"
@@ -50,7 +67,9 @@ const Form = () => {
           label="expenses"
           register={register}
           defaultValue={
-            expensesKind === "sumExpenses" ? revenue * 0.15 : expenses
+            expensesKind === "sumExpenses"
+              ? (revenue - HOUSE_EXCEPTION) * 0.15
+              : 0
           }
         />
 
