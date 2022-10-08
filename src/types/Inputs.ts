@@ -6,6 +6,6 @@ export interface InputTypes {
 }
 
 export enum ExpensesKind {
-  "sumExpenses" = "sumExpenses",
-  "exactCharges" = "exactCharges",
+  sumExpenses = "sumExpenses",
+  exactCharges = "exactCharges",
 }

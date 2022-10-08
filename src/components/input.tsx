@@ -25,7 +25,7 @@ const Input = ({
       <input
         defaultValue={defaultValue}
         {...register(label, { required })}
-        className="py-2 px-1 border-blue-100 border-2 rounded-md disabled:bg-slate-200 disabled:cursor-not-allowed"
+        className="py-2 px-1 border-blue-100 border-2 rounded-md disabled:bg-slate-200 disabled:cursor-not-allowed "
         disabled={disabled}
       />
     </div>

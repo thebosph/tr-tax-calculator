@@ -23,7 +23,6 @@ const Results: React.FC = () => {
             %{(results.ratio * 100).toFixed(2)}
           </span>
         </div>
-        <span>a{process.env.REACT_APP_HOUSE_EXCEPTION}</span>
       </div>
     </div>
   );

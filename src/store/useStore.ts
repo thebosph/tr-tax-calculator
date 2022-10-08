@@ -4,6 +4,8 @@ import { ResultTypes } from "../types/results";
 interface State {
   results: ResultTypes;
   setResults: (results: ResultTypes) => void;
+  modal: boolean;
+  setModal: (modal: boolean) => void;
 }
 
 const useStore = create<State>((set) => ({
@@ -13,6 +15,8 @@ const useStore = create<State>((set) => ({
     ratio: 0,
   },
   setResults: (results) => set({ results }),
+  modal: false,
+  setModal: (modal) => set({ modal }),
 }));
 
 export default useStore;

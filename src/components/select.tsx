@@ -7,7 +7,7 @@ const Select = React.forwardRef<
   { label: string; labelName?: string } & ReturnType<
     UseFormRegister<InputTypes>
   >
->(({ onChange, onBlur, name, label, labelName }, ref) => (
+>(({ onChange, onBlur, name, labelName }, ref) => (
   <div className="flex flex-col shadow-lg space-y-2 p-2 w-full rounded-md  ">
     <label className="text-2xl">{labelName}</label>
     <select
