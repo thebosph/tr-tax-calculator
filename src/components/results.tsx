@@ -6,7 +6,7 @@ const Results: React.FC = () => {
   return (
     <div className="flex flex-col items-center  space-y-10 w-full ">
       <h1 className="text-4xl font-bold">
-        Kira Gelirinden Kaynaklanan Gelir Vergisi Hesaplama
+        2022 Yılı Kira Gelirinden Kaynaklanan Gelir Vergisi
       </h1>
       <div className="flex flex-col md:flex-row justify-between space-y-5 md:space-y-0 md:space-x-5 w-full">
         <div className="bg-blue-400 shadow-md p-2 md:w-1/3 rounded-md flex flex-col space-y-3 ">
@@ -23,6 +23,7 @@ const Results: React.FC = () => {
             %{(results.ratio * 100).toFixed(2)}
           </span>
         </div>
+        <span>a{process.env.REACT_APP_HOUSE_EXCEPTION}</span>
       </div>
     </div>
   );
