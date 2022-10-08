@@ -18,16 +18,22 @@ const Form = () => {
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex justify-center items-center space-x-5"
+    >
       {/* register your input into the hook by invoking the "register" function */}
-      <input defaultValue="test" {...register("example")} />
+      <input defaultValue="test" {...register("example")} className="p-10" />
 
       {/* include validation with required or other standard HTML validation rules */}
-      <input {...register("exampleRequired", { required: true })} />
+      <input
+        {...register("exampleRequired", { required: true })}
+        className="p-10"
+      />
       {/* errors will return when field validation fails  */}
       {errors.exampleRequired && <span>This field is required</span>}
 
-      <input type="submit" />
+      <input type="submit" className="bg-white p-10" />
     </form>
   );
 };
