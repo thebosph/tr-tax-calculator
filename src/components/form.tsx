@@ -21,7 +21,7 @@ const Form = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex justify-center items-center space-x-5   w-full  "
+      className="flex flex-col md:flex-row justify-center items-center space-y-5 md:space-y-0 md:space-x-5   w-full  "
     >
       <Input labelName="Gelir" label="revenue" register={register} required />
       {errors.revenue && <span>Bu alanı boş bırakamazsınız</span>}

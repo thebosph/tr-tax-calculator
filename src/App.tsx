@@ -3,7 +3,7 @@ import Main from "./Screens/Main";
 
 function App() {
   return (
-    <div>
+    <div className="max-w-full  ">
       <Main />
     </div>
   );
