@@ -1,39 +1,40 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-
-type Inputs = {
-  example: string;
-  exampleRequired: string;
-};
+import { Inputs } from "../types/Inputs";
+import Input from "./input";
 
 const Form = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
-  console.log(watch("example")); // watch input value by passing the name of it
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+    reset();
+  };
+  console.log(errors);
+
+  // console.log(watch("revenue")); // watch input value by passing the name of it
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex justify-center items-center space-x-5"
+      className="flex justify-center items-center space-x-5   w-full  "
     >
-      {/* register your input into the hook by invoking the "register" function */}
-      <input defaultValue="test" {...register("example")} className="p-10" />
+      <Input labelName="Gelir" label="revenue" register={register} required />
+      {errors.revenue && <span>Bu alanı boş bırakamazsınız</span>}
+      <Input labelName="Gider" label="expenses" register={register} />
+      <Input labelName="İndirimler" label="allowance" register={register} />
 
-      {/* include validation with required or other standard HTML validation rules */}
-      <input
-        {...register("exampleRequired", { required: true })}
-        className="p-10"
-      />
       {/* errors will return when field validation fails  */}
-      {errors.exampleRequired && <span>This field is required</span>}
 
-      <input type="submit" className="bg-white p-10" />
+      <input
+        type="submit"
+        className="bg-white p-2 shadow-lg h-full rounded-md text-xl hover:bg-blue-400 hover:text-white transition-colors cursor-pointer"
+      />
     </form>
   );
 };
