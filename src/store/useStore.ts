@@ -1,11 +1,18 @@
 import create from "zustand";
-import { Results } from "../types/results";
+import { ResultTypes } from "../types/results";
 
-export const useStore = create((set) => ({
+interface State {
+  results: ResultTypes;
+  setResults: (results: ResultTypes) => void;
+}
+
+const useStore = create<State>((set) => ({
   results: {
     basis: 0,
-    expenses: 0,
-    allowance: 0,
+    tax: 0,
+    ratio: 0,
   },
-  setCalculateInputs: (inputs: Results) => set({ calculateInputs: inputs }),
+  setResults: (results) => set({ results }),
 }));
+
+export default useStore;
