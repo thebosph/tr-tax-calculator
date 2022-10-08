@@ -1,10 +1,10 @@
 import React from "react";
-import Form from "./components/form";
+import Main from "./Screens/Main";
 
 function App() {
   return (
-    <div className="p-20 bg-gray-700 h-screen flex justify-center items-center">
-      <Form />
+    <div>
+      <Main />
     </div>
   );
 }
