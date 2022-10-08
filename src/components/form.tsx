@@ -1,5 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Inputs } from "../types/Inputs";
+import { calculator } from "../utils/calculator";
+import useStore from "../store/useStore";
 import Input from "./input";
 
 const Form = () => {
@@ -9,17 +11,14 @@ const Form = () => {
     reset,
     formState: { errors },
   } = useForm<Inputs>();
-
+  const { setResults } = useStore();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    const result = calculator(data);
+    setResults(result);
     reset();
   };
-  console.log(errors);
-
-  // console.log(watch("revenue")); // watch input value by passing the name of it
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="flex justify-center items-center space-x-5   w-full  "
@@ -28,8 +27,6 @@ const Form = () => {
       {errors.revenue && <span>Bu alanı boş bırakamazsınız</span>}
       <Input labelName="Gider" label="expenses" register={register} />
       <Input labelName="İndirimler" label="allowance" register={register} />
-
-      {/* errors will return when field validation fails  */}
 
       <input
         type="submit"
