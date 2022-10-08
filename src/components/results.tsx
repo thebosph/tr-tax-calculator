@@ -19,7 +19,9 @@ const Results: React.FC = () => {
         </div>
         <div className="bg-yellow-600  shadow-md p-2 w-1/3 rounded-md flex flex-col space-y-3">
           <p className="text-2xl text-white"> Vergi/Gelir Oranı:</p>
-          <span className="text-3xl text-white">%{results.ratio}</span>
+          <span className="text-3xl text-white">
+            %{(results.ratio * 100).toFixed(2)}
+          </span>
         </div>
       </div>
     </div>
