@@ -2,12 +2,17 @@ import React from "react";
 import { UseFormRegister } from "react-hook-form";
 import { InputTypes } from "../types/Inputs";
 
+type optionItem = {
+  value: string;
+  optionName: string;
+};
+
 const Select = React.forwardRef<
   HTMLSelectElement,
-  { label: string; labelName?: string } & ReturnType<
+  { label: string; labelName?: string; options: optionItem[] } & ReturnType<
     UseFormRegister<InputTypes>
   >
->(({ onChange, onBlur, name, labelName }, ref) => (
+>(({ onChange, onBlur, name, labelName, options }, ref) => (
   <div className="flex flex-col shadow-lg space-y-2 p-2 w-full rounded-md  ">
     <label className="text-2xl">{labelName}</label>
     <select
@@ -17,8 +22,9 @@ const Select = React.forwardRef<
       onBlur={onBlur}
       className="py-3 px-1 bg-slate-100 "
     >
-      <option value="exactCharges">Gerçek</option>
-      <option value="sumExpenses">Götürü</option>
+      {options.map((option: optionItem) => (
+        <option value={option.value}>{option.optionName}</option>
+      ))}
     </select>
   </div>
 ));

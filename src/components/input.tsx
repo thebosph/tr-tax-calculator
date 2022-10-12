@@ -19,7 +19,7 @@ const Input = ({
   defaultValue,
 }: InputProps) => {
   return (
-    <div className="flex flex-col shadow-lg space-y-2 p-2 w-full rounded-md ">
+    <div className="flex flex-col shadow-lg space-y-2 py-2 w-full p-2  rounded-md ">
       <label className="text-2xl">{labelName}</label>
       <input
         defaultValue={defaultValue}

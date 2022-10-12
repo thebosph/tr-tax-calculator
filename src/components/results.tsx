@@ -2,7 +2,7 @@ import React from "react";
 import useStore from "../store/useStore";
 
 const Results: React.FC = () => {
-  const { results } = useStore();
+  const results = useStore((state) => state.results);
   return (
     <div className="flex flex-col items-center  space-y-10 w-full ">
       <h1 className="text-4xl font-bold">

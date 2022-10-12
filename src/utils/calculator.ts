@@ -7,6 +7,7 @@ export const calculator = ({
   expenses,
   allowance,
   expensesKind,
+  deductions,
 }: InputTypes) => {
   let basis;
   let tax;
@@ -18,6 +19,10 @@ export const calculator = ({
 
     basis = revenueWithoutException - usableExpenses - allowance;
     tax = taxCalcForBrackets(basis);
+    if (deductions) {
+      tax = tax - deductions;
+    }
+
     ratio = tax / revenueWithoutException;
   } else {
     basis = revenue - HOUSE_EXCEPTION - expenses - allowance;
