@@ -1,8 +1,12 @@
 # Tax Calculator for Turkey
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A basic tax calculator for rent income.
 
 Tax Calculator React + TypeScript
+
+## Important Note!
+
+This is an educational project. Tax calculation laws may vary, calculation methods and rates may differ. Learn tax laws for real calculations.
 
 ## Available Scripts
 
