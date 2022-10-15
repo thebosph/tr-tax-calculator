@@ -20,9 +20,13 @@ const Form = () => {
   const { revenue, expensesKind, loanKind } = watch();
 
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
-    if (revenue <= 9500) {
+    if (
+      (loanKind === "homeLoan" && revenue <= 9500) ||
+      (loanKind === "businessLoan" && revenue <= 49000)
+    ) {
       return setModal(true);
     }
+
     if (data.expensesKind === "sumExpenses") {
       data.expenses = (data.revenue - HOUSE_EXCEPTION) * 0.15;
     }
@@ -109,10 +113,21 @@ const Form = () => {
         //if revenue is less than 9500, show this message
         modal && (
           <Modal title="Bilgilendirme">
-            {" "}
-            2022 yılı için mesken kira istisnası 9500 TL'dir. Bu sebeple bir yıl
-            içindeki toplam kira geliri 9500 TL'nin altında kalan mükelleflerin
-            beyanname vermesine gerek olmadığından hesaplama yapılmamaktadır.{" "}
+            {loanKind === "homeLoan" ? (
+              <p>
+                2022 yılı için mesken kira istisnası 9500 TL'dir. Bu sebeple bir
+                yıl içindeki toplam kira geliri 9500 TL'nin altında kalan
+                mükelleflerin beyanname vermesine gerek olmadığından hesaplama
+                yapılmamaktadır.
+              </p>
+            ) : (
+              <p>
+                2022 yılı için işyeri kira istisnası 49000 TL'dir. Bu sebeple
+                bir yıl içindeki toplam kira geliri 49000 TL'nin altında kalan
+                mükelleflerin beyanname vermesine gerek olmadığından hesaplama
+                yapılmamaktadır.
+              </p>
+            )}
           </Modal>
         )
       }
